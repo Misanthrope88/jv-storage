@@ -1,7 +1,6 @@
 package core.basesyntax.impl;
 
 import core.basesyntax.Storage;
-import java.util.Objects;
 
 public class StorageImpl<K, V> implements Storage<K, V> {
     private static final int MAX_STORAGE_SIZE = 10;
@@ -46,7 +45,8 @@ public class StorageImpl<K, V> implements Storage<K, V> {
     }
 
     private boolean keysAreEqual(K currentKey, K targetKey) {
-        return Objects.equals(currentKey, targetKey);
+        return currentKey == targetKey
+                || currentKey != null && currentKey.equals(targetKey);
     }
 
     private static class Pair<K, V> {
